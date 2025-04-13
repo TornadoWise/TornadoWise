@@ -1,0 +1,30 @@
+{
+  "name": "tornadowise",
+  "version": "0.0.1",
+  "description": "Geo.ca hackathon | 2025 | Open Sourced",
+  "keywords": [
+    "Tornado",
+    "TornadoWatch",
+    "Canada",
+    "Geo.ca"
+  ],
+  "homepage": "https://github.com/TornadoWise/TornadoWise#readme",
+  "bugs": {
+    "url": "https://github.com/TornadoWise/TornadoWise/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TornadoWise/TornadoWise.git"
+  },
+  "license": "ISC",
+  "author": "Martha Paiz-Domingo, Malcolm Melbourne",
+  "type": "commonjs",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  }
+}
