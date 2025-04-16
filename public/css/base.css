@@ -13,3 +13,20 @@ nav {
     display: flex;
     justify-content: center;
 }
+
+main {
+    margin: 2rem 10rem 0 10rem;
+}
+
+article {
+    /* border: 1px solid black; */
+}
+
+h1 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+

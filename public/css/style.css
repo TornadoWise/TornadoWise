@@ -34,6 +34,83 @@
     text-decoration: underline;
 }
 
+.theTeam {
+    margin: 2rem 0 .5rem 0;
+}
+
+.theTeam h2 {
+    text-align: center;
+    margin: 2rem;
+}
+
+.team-container {
+    display: flex;
+}
+
+.team-container section {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid grey;
+    box-shadow: 0px 4px 3px grey;
+}
+
+.team-container section img {
+    display: block;
+    margin: auto;
+    max-width: 150px;
+    border-radius: 50%;
+    margin-bottom: 0.6rem;
+}
+
+.team-info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.team-container section span {
+    display: block;
+    margin-bottom: 2px;
+} 
+
+.team-container section p {
+    margin: 1rem;
+    color: red;
+} 
+
+.gt-wrapper {
+    margin: 0 1rem 0 1rem;
+    padding: 1rem;
+}
+
+.gt-h2 {
+    text-align: center;
+}
+.gt-content section {
+    display: flex;
+    justify-content: center;
+}
+
+.gt-button {
+    padding: .5rem;
+    margin: .3rem;
+    border: 1px solid #FFF;
+    color: white;
+}
+
+.gt-residents {
+    background-color: #006100;
+}
+
+.gt-policymakers {
+    background-color: #7A5000;
+}
+
+
+.copyright {
+    text-align: center;
+}
 
 
 
