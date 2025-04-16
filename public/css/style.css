@@ -1,0 +1,41 @@
+.logo {
+    display: block;
+    margin: auto;
+    max-height: 250px;
+    max-width:  250px;
+}
+.nav-container {
+    display: flex;
+    height: 40px;
+    background-color: #eed202;
+    justify-content: space-between;
+    width:100%;
+    padding-left: 35%;
+    padding-right: 35%;
+}
+.list-item {
+    display: block;
+    height: inherit;
+}
+
+.list-item a {
+    color: #000000;
+    text-decoration: none;
+    font-weight:bold;
+    vertical-align: middle;
+}
+
+.list-item:hover {
+    height: 100%;
+    background-color: #fff081;
+}
+
+.list-item a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
