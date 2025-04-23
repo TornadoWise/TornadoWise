@@ -1,4 +1,4 @@
-# AquaAlert
+# TornadoWise
 
 Geo.ca hackathon | 2025 | Open Sourced
 
@@ -50,7 +50,7 @@ Now install all the required dependencies so the project can run.
 Now that all the dependencies are install, let's run the server.
 
 ```
-    node index.js
+    node server.js
 ```
 
 In the terminal, you should see "Listening on port 8080."

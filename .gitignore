@@ -1,2 +1,4 @@
 /node_modules
 /.vscode
+public/qgis
+public/qgis/data/AVHRR_Landcover_9.js

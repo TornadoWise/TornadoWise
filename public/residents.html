@@ -4,9 +4,17 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>TornadoWise Residents - Geo.ca Hackathon Project</title>
+
+        <!-- External -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+        <!-- Internal -->
         <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/queries.css" />
+        <link rel="stylesheet" href="css/residents.css" />
     </head>
 
     <body>
@@ -19,14 +27,91 @@
                     <li class="list-item"><a href="policymakers.html">For Policy Makers</a></li>
                 </ul>
             </nav>
+
+            <h1>For Residents</h1>
         </header>
         <main>
-            <h1>For Residents</h1>
+            <article>
+                <section>
+                    <div id="searchFields">
+                        <input type="text" id="searchField" />
+                        <button onclick="useSearch()">Search</button>
+                        <button onclick="useMyLocation()">Use my location</button>
+                    </div>
+                </section>
+            </article>
+            <div id="map"></div>
+
+            <div
+                id="mapOne"
+                class="geoview-map"
+                style="height: 100vh"
+                data-lang="en"
+                data-config="{
+                'map': {
+                  'interaction': 'dynamic',
+                  'viewSettings': {
+                    'projection': 3978
+                  },
+                  'basemapOptions': {
+                    'basemapId': 'transport',
+                    'shaded': true,
+                    'labeled': true
+                  },
+                  'listOfGeoviewLayerConfig': [
+                    {
+                        'geoviewLayerId': 'esriDynamicLYR2',
+                        'geoviewLayerName': 'Energy',
+                        'metadataAccessPath': 'https://maps-cartes.ec.gc.ca/arcgis/rest/services/CESI/MapServer',
+                        'geoviewLayerType': 'esriDynamic',
+                        'listOfLayerEntryConfig': [{ 'layerId': '0' }, { 'layerId': '6' }]
+                    },
+                    {
+                        'geoviewLayerId': 'wmsLYR1',
+                        'geoviewLayerName': 'earthquakes',
+                        'metadataAccessPath': 'https://maps-cartes.services.geo.ca/server_serveur/rest/services/NRCan/earthquakes_en/MapServer/',
+                        'geoviewLayerType': 'esriDynamic',
+                        'listOfLayerEntryConfig': [
+                          {
+                            'layerId': '1'
+                          }
+                        ]
+                    },
+                    {
+                        'geoviewLayerId': '	fd3355a7-ae34-4df7-b477-07306182db69',
+                        'geoviewLayerName': 'tornado database',
+                        'metadataAccessPath': 'https://data-donnees.az.ec.gc.ca/api/file?path=%2Fweather%2Fproducts%2Fcanadian-national-tornado-database-verified-events-1980-2009-public%2Fcanadian-national-tornado-database-verified-events-1980-2009-public-gis-en%2FGIS_CAN_VerifiedTornadoes_1980-2009.json',
+                        'geoviewLayerType': 'esriDynamic',
+                        'listOfLayerEntryConfig': [
+                          {
+                            'layerId': '2'
+                          }
+                        ]
+                    }
+                  ]
+                },
+                'theme': 'geo.ca',
+                'components': ['north-arrow', 'overview-map'],
+                'footerBar': {
+                    'tabs': {
+                        'core': ['legend', 'layers', 'details', 'data-table']
+                    }
+                },
+                'corePackages': []
+              }"
+            ></div>
+            <script src="https://canadian-geospatial-platform.github.io/geoview/public/cgpv-main.js"></script>
+            <script>
+                // init functions, takes one parameter as a function callback. Any code inside the callback will run once map has finished rendering.
+                cgpv.init(function () {});
+            </script>
         </main>
         <footer>
             <div class="copyright">
                 <span id="copyright-text"> &copy; Copyright - 2025. All rights reserved. Open sourced project. Fix this later</span>
             </div>
         </footer>
+
+        <script src="./scripts/geoLocation.js"></script>
     </body>
 </html>
