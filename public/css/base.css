@@ -1,12 +1,37 @@
 * {
     margin: 0;
     padding: 0;
+    --primary-color: #d9b08c;
+    --heading-bg-color: aliceblue;
+    --nav-bg-color: white;
+    --main-content-bg-color: white;
+    --nav-bg-color: white;
+    --nav-item-hover-bg-color: #e7e7e7;
+    --nav-item-link-color: black;
+    --heading-color: #734a26;
+    --border-color: #734a26;
+}
+
+@font-face {
+    font-family: "Open-Sans";
+    src: url("./fonts/OpenSans/OpenSans-VariableFont_wdth\,wght.ttf");
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Open-Sans";
+    src: url("./fonts/OpenSans/OpenSans-Italic-VariableFont_wdth\,wght.ttf");
+    font-style: italic;
+}
+
+body {
+    font-family: "Open-Sans";
 }
 
 header {
     display: flex;
     flex-direction: column;
-    background-color: aliceblue;
+    background-color: var(--heading-bg-color);
 }
 
 nav {
@@ -15,10 +40,19 @@ nav {
 }
 
 main {
-    margin: 2rem 10rem 0 10rem;
+    margin: 2rem 1rem 0 1rem;
+}
+
+footer {
+    border-top: 1px solid var(--border-color);
 }
 
 article {
+    box-shadow: 0px 3px 3px #aaaaaa;
+    border: 0.5px solid #aaaaaa;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
     /* border: 1px solid black; */
 }
 
@@ -26,7 +60,8 @@ h1 {
     text-align: center;
 }
 
+h1,
+h2,
 h3 {
-    text-align: center;
+    color: var(--heading-color);
 }
-
