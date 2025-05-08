@@ -1,10 +1,3 @@
-var wthstation = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS", {
-    layers: "AHCCD.STATIONS",
-    format: "image/png",
-    transparent: true,
-    attribution: "© National Resources Canada",
-}).addTo(map);
-
 var transformers1 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
     layers: "transformerstation_250k",
     format: "image/png",
@@ -32,6 +25,13 @@ var powerlines2 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?se
     transparent: true,
     attribution: "© National Resources Canada",
 }).addTo(map);
+
+var wthstation = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS", {
+    layers: "AHCCD.STATIONS",
+    format: "image/png",
+    transparent: true,
+    attribution: "© National Resources Canada",
+});
 
 var landcover = L.tileLayer.wms("https://datacube.services.geo.ca/ows/landcover", {
     layers: "landcover-2020",
