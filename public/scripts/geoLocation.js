@@ -253,6 +253,7 @@ fetch("/getTornadoData")
                     `<b>Tornado</b>` +
                     `<b>Year:</b> ${props.yyyy_local || "N/A"}<br>
                             <b>Nearest Community:</b> ${props.nearcmmty || "N/A"}<br>
+                            <b>Province/Territory:</b> ${props.prov || "N/A"}<br>
                             <b>Fujita Scale:</b> ${props.fujita_ || "N/A"}`;
                 layer.bindPopup(popup);
             },
