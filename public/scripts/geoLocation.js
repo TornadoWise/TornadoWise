@@ -225,7 +225,7 @@ var provinces = L.tileLayer
 //         attribution: "© Natural Resources Canada",
 //     });
 
-fetch("/getTornadoData")
+fetch("/getTornadoEventsData")
     .then((res) => res.json())
     .then((data) => {
         data.features = data.features.map((f) => ({
@@ -260,7 +260,7 @@ fetch("/getTornadoData")
         }).addTo(map);
     });
 
-fetch("https://raw.githubusercontent.com/TornadoWise/TornadoWise/refs/heads/Martha_Sandbox/data/TornadoTracks_1980_2009.geojson")
+fetch("/getTornadoTracksData")
     .then((res) => res.json())
     .then((data) => {
         data.features = data.features.map((f) => ({

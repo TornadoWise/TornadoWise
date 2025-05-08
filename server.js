@@ -33,8 +33,24 @@ app.post("/searchCity", function (req, res) {
     xhttp.send();
 });
 
-app.get("/getTornadoData", function (req, res) {
-    fs.readFile("/data/TornadoEvents_1980-2009.json", { encoding: "utf8" }, function (err, data) {});
+app.get("/getTornadoEventsData", function (req, res) {
+    fs.readFile("./data/TornadoEvents_1980_2009.geojson", { encoding: "utf8" }, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(data);
+        }
+    });
+});
+
+app.get("/getTornadoTracksData", function (req, res) {
+    fs.readFile("./data/TornadoTracks_1980_2009.geojson", { encoding: "utf8" }, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(data);
+        }
+    });
 });
 
 app.listen(port, function (req, res) {
