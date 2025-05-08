@@ -70,28 +70,28 @@ var hotdays = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=
     attribution: "© Environment and Climate Change Canada",
 });
 
-var hotnights = L.tileLayer.wms("https://geo.weather.gc.ca/geomet?lang=en&service=WMS", {
+var hotnights = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS&version=1.3.0", {
     layers: "INDICES.TN20.RCP26_PCTL50",
     format: "image/png",
     transparent: true,
     attribution: "© Environment and Climate Change Canada",
 });
 
-var historprecip = L.tileLayer.wms("https://geo.weather.gc.ca/geomet?lang=en&service=WMS", {
+var historprecip = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS&version=1.3.0", {
     layers: "CMIP5.PR.HISTO.SUMMER.ABS_PCTL50",
     format: "image/png",
     transparent: true,
     attribution: "© Environment and Climate Change Canada",
 });
 
-var historictemp = L.tileLayer.wms("https://geo.weather.gc.ca/geomet?lang=en&service=WMS", {
+var historictemp = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS&version=1.3.0", {
     layers: "CMIP5.TT.HISTO.SUMMER.ANO_PCTL50",
     format: "image/png",
     transparent: true,
     attribution: "© Environment and Climate Change Canada",
 });
 
-var historicwind = L.tileLayer.wms("https://geo.weather.gc.ca/geomet?lang=en&service=WMS", {
+var historicwind = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS&version=1.3.0", {
     layers: "CMIP5.SFCWIND.HISTO.SUMMER.ANO_PCTL50",
     format: "image/png",
     transparent: true,
