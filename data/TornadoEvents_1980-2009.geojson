@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"name": "Tornados_1980_2009",
+"name": "TornadoEvents_1980-2009",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:ESRI::102113" } },
 "features": [
 { "type": "Feature", "properties": { "fid": 1, "yyyy_local": 1980.0, "mm_local": 4.0, "dd_local": 6.0, "hhmm_local": 1920.0, "ymdhm_utc": "19800407 0020", "nearcmmty": "Altona", "prov": "MB", "fujita_": "0", "start_lat": 49.105, "start_lon": -97.568, "end_lat": null, "end_lon": null, "lngth_m": "-999", "motn_deg": "-999", "widthmax_m": "-999", "fatal_hum": "-999", "injur_hum": "-999", "dmg_thsnds": "-999", "frcst_rgn": "Morden - Winkler - Altona - Emerson - Morris" }, "geometry": { "type": "Point", "coordinates": [ -10861220.077718116343021, 6292696.513384211808443 ] } },

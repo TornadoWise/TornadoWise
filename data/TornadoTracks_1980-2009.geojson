@@ -1,6 +1,6 @@
 {
 "type": "FeatureCollection",
-"name": "TornadoTracks_1980_2009",
+"name": "TornadoTracks_1980-2009",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:ESRI::102113" } },
 "features": [
 { "type": "Feature", "properties": { "fid": 1, "yyyy_local": 1980.0, "mm_local": 5.0, "dd_local": 5.0, "hhmm_local": 2000.0, "ymdhm_utc": "19800506 2300", "nearcmmty": "Stratford", "prov": "ON", "fujita_": "0", "start_lat": 43.385625, "start_lon": -81.012735, "end_lat": 43.3897, "end_lon": -80.963823, "lngth_m": 4190.0, "motn_deg": "265", "widthmax_m": "30", "fatal_hum": "-999", "injur_hum": "-999", "dmg_thsnds": "-999", "frcst_rgn": "Huron - Perth" }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -9018296.407970413565636, 5370853.319840016774833 ], [ -9016935.261654946953058, 5371009.668637115508318 ], [ -9015574.069690603762865, 5371165.819782882928848 ], [ -9014212.832132741808891, 5371321.773253617808223 ], [ -9012851.549036731943488, 5371477.529025656171143 ] ] ] } },
