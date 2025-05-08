@@ -177,3 +177,7 @@ section {
 .footer-nav-item {
     list-style-type: none;
 }
+
+.leaflet-control-layers-list {
+    text-align: left;
+}

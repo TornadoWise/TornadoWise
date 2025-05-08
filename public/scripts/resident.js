@@ -28,7 +28,7 @@ var meantemp = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service
 
 var overlaymaps = {
     "Weather Alerts": weatheralerts,
-    "Days above 30C": hotdays,
+    "Days above 30&degC": hotdays,
     "Total Precipitation in the Summer": totalprecip,
     "Mean Temperature in the Summer": meantemp,
 };
