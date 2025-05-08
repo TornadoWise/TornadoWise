@@ -1,0 +1,55 @@
+@media (max-width: 1000px) {
+    body {
+        /* background-color: red; */
+    }
+
+    .nav-container {
+        display: block;
+        text-align: center;
+    }
+
+    .team-container {
+        display: block;
+    }
+
+    .team-container section {
+    }
+
+    .main-container {
+        max-width: 100%;
+        flex-direction: column-reverse;
+    }
+    #map {
+        width: inherit;
+    }
+
+    section {
+        max-width: 100%;
+    }
+
+    .search {
+    }
+
+    #searchFields {
+        min-width: 100%;
+    }
+
+    #searchField {
+        width: 100%;
+        height: 35px;
+        font-size: large;
+    }
+
+    .searchControls {
+        flex-direction: column;
+    }
+
+    .searchControls button {
+    }
+}
+
+/* @media (min-width: 700px) {
+    .nav-container {
+        display: flex;
+    }
+} */

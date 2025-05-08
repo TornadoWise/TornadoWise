@@ -6,32 +6,40 @@
 }
 .nav-container {
     display: flex;
-    height: 40px;
-    background-color: #ffcb9a;
+    height: auto;
+    background-color: var(--nav-bg-color);
     justify-content: space-between;
     width: 100%;
-    padding-left: 35%;
-    padding-right: 35%;
+
+    /* Add media query to adjust padding */
+    padding-left: 25%;
+    padding-right: 25%;
+    box-shadow: var(--primary-color) 0px 2px 1px;
 }
 .list-item {
-    display: block;
-    height: inherit;
+    display: inline;
 }
 
 .list-item a {
-    color: #000000;
+    display: block;
+    color: var(--nav-item-link-color);
     text-decoration: none;
     font-weight: bold;
-    vertical-align: middle;
+    padding: 16px;
 }
 
 .list-item:hover {
     height: 100%;
-    background-color: #d9b08c;
+    background-color: var(--nav-item-hover-bg-color);
 }
 
 .list-item a:hover {
-    text-decoration: underline;
+    color: var(--nav-item-link-color);
+}
+
+.hero-image {
+    height: 400px;
+    background-image: url("../images/hero.png");
 }
 
 section {
@@ -40,7 +48,6 @@ section {
 }
 
 .theTeam {
-    margin: 2rem 0 0.5rem 0;
 }
 
 .theTeam h2 {
@@ -54,12 +61,11 @@ section {
 }
 
 .team-container section {
-    display: flex;
-    flex-direction: column;
+    max-width: 100%;
     margin: 1rem;
     padding: 1rem;
-    border: 1px solid grey;
-    box-shadow: 0px 4px 3px grey;
+    border: 1px solid #aaaaaa;
+    box-shadow: 0px 4px 3px #aaaaaa;
 }
 
 .team-container section img {
@@ -87,7 +93,6 @@ section {
 }  */
 
 .gt-wrapper {
-    margin: 0 1rem 0 1rem;
     padding: 1rem;
 }
 
@@ -126,6 +131,7 @@ section {
 .main-container {
     display: flex;
     justify-content: center;
+    border-bottom: #000000 solid 1px;
 }
 
 .search {
@@ -144,6 +150,7 @@ section {
 
 #results {
     background-color: lightgrey;
+    overflow: hidden;
 }
 
 .goalPoints,
@@ -157,4 +164,16 @@ section {
 .goalPara,
 .projectPara {
     text-align: left;
+}
+
+.footer-nav-container {
+}
+
+.footer-nav-items {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-nav-item {
+    list-style-type: none;
 }
