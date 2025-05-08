@@ -99,15 +99,16 @@ var historicwind = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?ser
 });
 
 var overlaymaps = {
+    "Weather Stations": wthstation,
     "Land Cover": landcover,
     "Average Home Value": homevalue,
-    "Probability of Above Normal Temp": abovenrmltemp,
-    "Precip at or Above 10mm": precipabv10,
-    "Days Above 30C": hotdays,
-    "Nights Above 20C": hotnights,
-    "Historical Mean Precip": historprecip,
-    "Historical Changes in Temp": historictemp,
-    "Historical Cahnges in Wind": historicwind
+    "Probability of Above Normal Temperature": abovenrmltemp,
+    "Precipation at or Above 10mm": precipabv10,
+    "Days with Temperatures Above 30&degC": hotdays,
+    "Nights Above 20&degC": hotnights,
+    "Historical Mean Precipitation": historprecip,
+    "Historical Changes in Temperature": historictemp,
+    "Historical Changes in Wind": historicwind
 };
 
 L.control.layers(null, overlaymaps).addTo(map);
