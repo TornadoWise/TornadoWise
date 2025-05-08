@@ -37,6 +37,11 @@
     color: var(--nav-item-link-color);
 }
 
+.hero-image {
+    height: 400px;
+    background-image: url("../images/hero.png");
+}
+
 section {
     text-align: center;
     padding: 5px;
