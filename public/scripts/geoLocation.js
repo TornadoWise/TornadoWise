@@ -247,8 +247,8 @@ fetch("/getTornadoEventsData")
                 //     fillOpacity: 0.9,
                 // });
                 var tornadoIcon = L.icon({
-                    iconUrl: "",
-                    iconSize: [24, 24],
+                    iconUrl: "./images/Tornado.png",
+                    iconSize: [16, 16],
                 });
                 return L.marker(latlng, {
                     icon: tornadoIcon,
