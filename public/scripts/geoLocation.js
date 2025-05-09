@@ -238,13 +238,20 @@ fetch("/getTornadoEventsData")
 
         L.geoJSON(data, {
             pointToLayer: function (feature, latlng) {
-                return L.circleMarker(latlng, {
-                    radius: 4,
-                    fillColor: "#ffff00",
-                    color: "#eaff00",
-                    weight: 2,
-                    opacity: 1,
-                    fillOpacity: 0.9,
+                // return L.circleMarker(latlng, {
+                //     radius: 4,
+                //     fillColor: "#ffff00",
+                //     color: "#eaff00",
+                //     weight: 2,
+                //     opacity: 1,
+                //     fillOpacity: 0.9,
+                // });
+                var tornadoIcon = L.icon({
+                    iconUrl: "",
+                    iconSize: [24, 24],
+                });
+                return L.marker(latlng, {
+                    icon: tornadoIcon,
                 });
             },
             onEachFeature: function (feature, layer) {
@@ -277,7 +284,7 @@ fetch("/getTornadoTracksData")
         L.geoJSON(data, {
             style: function (feature) {
                 return {
-                    color: "#ffff00",
+                    color: "#4c4b51",
                     weight: 4,
                     opacity: 1,
                 };
