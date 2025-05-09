@@ -41,20 +41,28 @@ function getFeatureInfoUrl(map, layer, latlng, params) {
 map.on('click', function (e) {
     var url = getFeatureInfoUrl(map, weatheralerts, e.latlng,
         {
-            'info_format': 'text/html', 
+            'info_format': 'application/json'
             //'propertyName': 'event,headline,description'
         });
 
     fetch(url)
-        .then(response => response.text())
-        .then(content => {
-            if (content && content.trim() !== '') {
+        .then(response => response.json())
+        .then(data => {
+            // Check if there are features
+            if (data.features && data.features.length > 0) {
+                let props = data.features[0].properties;
+                let content = `
+                    <strong>${props.EVENT || 'Alert'}</strong><br>
+                    <em>${props.HEADLINE || 'No headline'}</em><br>
+                    ${props.DESCRIPTION || 'No description provided.'}
+                `;
                 L.popup()
                     .setLatLng(e.latlng)
                     .setContent(content)
                     .openOn(map);
             }
-        });
+        })
+        .catch(err => console.error("FeatureInfo error:", err));
 });
 
 var hotdays = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS&version=1.3.0", {
