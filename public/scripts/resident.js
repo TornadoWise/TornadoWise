@@ -1,4 +1,4 @@
-var weatheralerts = L.tileLayer.wms("https://geo.weather.gc.ca/geomet?lang=en&service=WMS", {
+var weatheralerts = L.tileLayer.wms("https://geo.weather.gc.ca/geomet?lang=en&service=WMS&version=1.3.0", {
     layers: "ALERTS",
     format: "image/png",
     transparent: true,
