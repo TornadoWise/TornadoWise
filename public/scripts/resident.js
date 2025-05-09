@@ -5,65 +5,22 @@ var weatheralerts = L.tileLayer.wms("https://geo.weather.gc.ca/geomet?lang=en&se
     attribution: "© Environment and Climate Change Canada",
 });
 
-function getFeatureInfoUrl(map, layer, latlng, params) {
-    var point = map.latLngToContainerPoint(latlng, map.getZoom());
-    var size = map.getSize();
-
-    var baseParams = {
-        request: 'GetFeatureInfo',
-        service: 'WMS',
-        srs: 'EPSG:4326',
-        styles: '',
-        transparent: true,
-        version: '1.3.0',
-        format: 'image/png',
-        bbox: map.getBounds().toBBoxString(),
-        height: size.y,
-        width: size.x,
-        layers: layer.wmsParams.layers,
-        query_layers: layer.wmsParams.layers,
-        info_format: 'text/html'
-    };
-
-    if (baseParams.version === "1.3.0") {
-        baseParams.crs = 'EPSG:4326';
-        baseParams.i = point.x;
-        baseParams.j = point.y;
-    } else {
-        baseParams.x = point.x;
-        baseParams.y = point.y;
-    }
-
-    Object.assign(baseParams, params);
-    return layer._url + L.Util.getParamString(baseParams, layer._url, true);
-}
-
-map.on('click', function (e) {
-    var url = getFeatureInfoUrl(map, weatheralerts, e.latlng,
-        {
-            'info_format': 'application/json'
-            //'propertyName': 'event,headline,description'
-        });
-
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            // Check if there are features
-            if (data.features && data.features.length > 0) {
-                let props = data.features[0].properties;
-                let content = `
-                    <strong>${props.EVENT || 'Alert'}</strong><br>
-                    <em>${props.HEADLINE || 'No headline'}</em><br>
-                    ${props.DESCRIPTION || 'No description provided.'}
-                `;
-                L.popup()
-                    .setLatLng(e.latlng)
-                    .setContent(content)
-                    .openOn(map);
-            }
-        })
-        .catch(err => console.error("FeatureInfo error:", err));
-});
+fetch('https://dd.weather.gc.ca/alerts/cap/geojson/ON.geojson') // Replace "ON" with your province
+  .then(response => response.json())
+  .then(data => {
+    L.geoJSON(data, {
+      onEachFeature: function (feature, layer) {
+        const props = feature.properties;
+        const popupContent = `
+          <strong>${props.event}</strong><br>
+          <em>${props.headline}</em><br>
+          ${props.description}<br>
+          <a href="${props.web}" target="_blank">More info</a>
+        `;
+        layer.bindPopup(popupContent);
+      }
+    }).addTo(map);
+  });
 
 var hotdays = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS&version=1.3.0", {
     layers: "INDICES.TX30.HISTO_PCTL50",
