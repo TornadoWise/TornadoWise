@@ -49,3 +49,62 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(map);
+
+map.on('click', function (e) {
+    var url = getFeatureInfoUrl(
+        map,
+        weatheralerts,
+        e.latlng,
+        {
+            'info_format': 'text/html', 
+            'propertyName': 'event,headline,description'
+        }
+    );
+
+    fetch(url)
+        .then(response => response.text())
+        .then(html => {
+            if (html) {
+                L.popup()
+                    .setLatLng(e.latlng)
+                    .setContent(html)
+                    .openOn(map);
+            }
+        });
+});
+
+function getFeatureInfoUrl(map, layer, latlng, params) {
+    var point = map.latLngToContainerPoint(latlng, map.getZoom());
+    var size = map.getSize();
+
+    var baseParams = {
+        request: 'GetFeatureInfo',
+        service: 'WMS',
+        srs: 'EPSG:4326',
+        styles: '',
+        transparent: true,
+        version: '1.3.0',
+        format: 'image/png',
+        bbox: map.getBounds().toBBoxString(),
+        height: size.y,
+        width: size.x,
+        layers: layer.wmsParams.layers,
+        query_layers: layer.wmsParams.layers,
+        info_format: 'text/html'
+    };
+
+    if (baseParams.version === "1.3.0") {
+        baseParams.crs = 'EPSG:4326';
+        baseParams.i = point.x;
+        baseParams.j = point.y;
+    } else {
+        baseParams.x = point.x;
+        baseParams.y = point.y;
+    }
+
+    Object.assign(baseParams, params);
+
+    return layer._url + L.Util.getParamString(baseParams, layer._url, true);
+}
+
+
