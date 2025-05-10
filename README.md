@@ -57,13 +57,28 @@ In the terminal, you should see "Listening on port 8080."
 
 ## Special notes
 
-## Attribution
+## License / Intellectual Property
 
-This project includes icons from [Font Awesome Free](https://fontawesome.com/icons), licensed under the [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
+This project was developed as part of a Natural Resources Canada (NRCan) hackathon using open data from [GEO.ca](https://www.geo.ca/).
 
-Modifications made:
+All intellectual property (Arising IP) developed through the hackathon remains the property of the project team. In accordance with the hackathon rules, this IP is made publicly available and licensed for open use. NRCan is granted the right to copy, modify, publish, translate, adapt, distribute, and otherwise use the project materials in any medium or format for any lawful purpose.
 
--   Recolored icons to match site branding
--   Optimized SVGs for reduced file size
+The project may use third-party open data and open-source tools governed by their respective licenses. Attribution is provided below where required.
 
-Original icons © Fonticons, Inc.
+## Data Sources and Attribution
+
+This project uses open data from the following sources:
+
+-   [GEO.ca](https://www.geo.ca/) – Various datasets licensed under the [Open Government Licence – Canada](https://open.canada.ca/en/open-government-licence-canada)
+-   [Name of Dataset 2] – Licensed under [License Name or URL]
+
+All data is used in accordance with the terms provided by the data custodians. Attribution requirements have been met where applicable.
+
+## Tools and Libraries
+
+-   [Node.js](https://nodejs.org) – MIT License
+-   [Express.js](https://expressjs.com) – MIT License
+-   [Font Awesome Free](https://fontawesome.com) – CC BY 4.0 (see Attribution section above)
+-   [OpenLayers](https://openlayers.org) – BSD-2-Clause License
+
+All tools used are compliant with open licensing and are not subject to copyleft restrictions.
