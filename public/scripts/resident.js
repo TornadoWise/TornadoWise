@@ -35,7 +35,10 @@ function getFeatureInfoUrl(map, layer, latlng) {
     const url = getFeatureInfoUrl(map, weatheralerts, e.latlng);
     console.log("GetFeatureInfo URL:", url);
     fetch(url)
-      .then(res => res.json())
+    .then(res => res.text())
+    .then(text => {
+      console.log(text);
+    })
       .then(data => {
         const features = data.features;
         if (!features || features.length === 0) {
