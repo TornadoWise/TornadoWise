@@ -11,7 +11,11 @@
 
     <body>
         <header>
-            <img class="logo" src="images/TW_logo.png" alt="Tornado Wise Logo" />
+            <div class="logo-container">
+                <a class="logo-clickable-link" href="index.html">
+                    <img class="logo" src="images/TornadoWise.png" alt="Tornado Wise Logo" />
+                </a>
+            </div>
             <nav>
                 <ul class="nav-container">
                     <li class="list-item"><a href="index.html">Home</a></li>
@@ -21,18 +25,18 @@
                     <li class="list-item"><a href="https://github.com/TornadoWise/TornadoWise/tree/main">GitHub</a></li>
                 </ul>
             </nav>
-
-            <article class="hero-image">
-                <div class="hero-welcome">
-                    <h1 class="hero-heading">Homepage</h1>
-                    <p class="hero-para">Welcome to TornadoWise!</p>
-                    <section class="gt-buttons">
-                        <button class="gt-button gt-residents" type="button" onclick="location.href='residents.html'">Residents</button>
-                        <button class="gt-button gt-policymakers" type="button" onclick="location.href='policymakers.html'">Policy Makers</button>
-                    </section>
-                </div>
-            </article>
         </header>
+
+        <div class="hero-image">
+            <div class="hero-welcome">
+                <h1 class="hero-heading">Homepage</h1>
+                <p class="hero-para">Welcome to TornadoWise!</p>
+                <section class="gt-buttons">
+                    <button class="gt-button gt-residents" type="button" onclick="location.href='residents.html'">Residents</button>
+                    <button class="gt-button gt-policymakers" type="button" onclick="location.href='policymakers.html'">Policy Makers</button>
+                </section>
+            </div>
+        </div>
         <main>
             <article>
                 <h2>Project Scope</h2>
@@ -57,21 +61,24 @@
             </article>
         </main>
         <footer>
-            <div class="copyright">
-                <nav class="footer-nav">
-                    <ul class="footer-nav-items-left">
-                        <li class="footer-nav-item"><a href="index.html">Home</a></li>
-                        <li class="footer-nav-item"><a href="residents.html">Residents</a></li>
-                        <li class="footer-nav-item"><a href="policymakers.html">Policy Makers</a></li>
-                        <li class="footer-nav-item"><a href="about.html">About Us</a></li>
-                    </ul>
+            <nav class="footer-nav">
+                <ul class="footer-nav-items-left">
+                    <li class="footer-nav-item"><a href="index.html">Home</a></li>
+                    <li class="footer-nav-item"><a href="residents.html">Residents</a></li>
+                    <li class="footer-nav-item"><a href="policymakers.html">Policy Makers</a></li>
+                    <li class="footer-nav-item"><a href="about.html">About Us</a></li>
+                </ul>
 
-                    <ul class="footer-nav-items-right">
-                        <li class="footer-nav-item"><a href="https://geo.ca/">Geo.ca</a></li>
-                        <li class="footer-nav-item"><a href="https://geoignite.ca/">GeoIgnite.ca</a></li>
-                        <li class="footer-nav-item"><a href="https://github.com/TornadoWise/TornadoWise/tree/main">GitHub.com</a></li>
-                    </ul>
-                </nav>
+                <ul class="footer-nav-items-right">
+                    <li class="footer-nav-item"><a href="https://geo.ca/">Geo.ca</a></li>
+                    <li class="footer-nav-item"><a href="https://geoignite.ca/">GeoIgnite.ca</a></li>
+                    <li class="footer-nav-item"><a href="https://github.com/TornadoWise/TornadoWise/tree/main">GitHub.com</a></li>
+                </ul>
+            </nav>
+            <div class="footer-logo-container">
+                <img class="footer-logo" src="images/TW_logo.png" />
+            </div>
+            <div class="copyright">
                 <span id="copyright-text"> &copy; Copyright 2025. Tornado Wise. All rights reserved.</span>
             </div>
         </footer>
