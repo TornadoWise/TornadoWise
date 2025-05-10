@@ -57,20 +57,23 @@ In the terminal, you should see "Listening on port 8080."
 
 ## Special notes
 
-## License / Intellectual Property
+## Attribution
 
-This project was developed as part of a Natural Resources Canada (NRCan) hackathon using open data from [GEO.ca](https://www.geo.ca/).
+This project includes icons from [Font Awesome Free](https://fontawesome.com/icons), which are licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
 
-All intellectual property (Arising IP) developed through the hackathon remains the property of the project team. In accordance with the hackathon rules, this IP is made publicly available and licensed for open use. NRCan is granted the right to copy, modify, publish, translate, adapt, distribute, and otherwise use the project materials in any medium or format for any lawful purpose.
+### Modifications Made
 
-The project may use third-party open data and open-source tools governed by their respective licenses. Attribution is provided below where required.
+-   Recolored icons to match site branding
+-   Optimized SVGs for reduced file size
+
+Original icons © Fonticons, Inc.
 
 ## Data Sources and Attribution
 
 This project uses open data from the following sources:
 
 -   [GEO.ca](https://www.geo.ca/) – Various datasets licensed under the [Open Government Licence – Canada](https://open.canada.ca/en/open-government-licence-canada)
--   [Name of Dataset 2] – Licensed under [License Name or URL]
+-   [Other Dataset Name] – Licensed under [License Name or URL, if applicable]
 
 All data is used in accordance with the terms provided by the data custodians. Attribution requirements have been met where applicable.
 
@@ -78,7 +81,28 @@ All data is used in accordance with the terms provided by the data custodians. A
 
 -   [Node.js](https://nodejs.org) – MIT License
 -   [Express.js](https://expressjs.com) – MIT License
--   [Font Awesome Free](https://fontawesome.com) – CC BY 4.0 (see Attribution section above)
+-   [Font Awesome Free](https://fontawesome.com) – CC BY 4.0 License
 -   [OpenLayers](https://openlayers.org) – BSD-2-Clause License
 
 All tools used are compliant with open licensing and are not subject to copyleft restrictions.
+
+## Development Tools
+
+This project was developed using the following open-source tools:
+
+-   [QGIS](https://qgis.org) – A free and open source geographic information system licensed under the GNU General Public License (GPL v2).
+-   [Visual Studio Code](https://code.visualstudio.com/) – A free source-code editor developed by Microsoft, released under the MIT License.
+
+## License / Intellectual Property
+
+This project was developed as part of a Natural Resources Canada (NRCan) hackathon using open data from [GEO.ca](https://www.geo.ca/).
+
+All intellectual property (Arising IP) developed through the hackathon remains the property of the project team. In accordance with the hackathon rules, this IP is made publicly available and licensed for open use. NRCan is granted the right to copy, modify, publish, translate, adapt, distribute, and otherwise use the project materials in any medium or format for any lawful purpose.
+
+The project may use third-party open data and open-source tools governed by their respective licenses. Attribution is provided where required.
+
+## Canva Usage Disclaimer
+
+All visual assets (e.g., backgrounds, logos, icons) used in this project were created using [Canva](https://www.canva.com) and involved significant modification, layering, or customization. No Canva media was used in its original standalone form.
+
+These assets are used in accordance with Canva’s [Content License Agreement](https://www.canva.com/policies/content-license-agreement/) for non-commercial, publicly viewable projects.
