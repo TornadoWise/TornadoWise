@@ -16,8 +16,8 @@ function getFeatureInfoUrl(map, layer, latlng) {
         request: 'GetFeatureInfo',
         service: 'WMS',
         version: '1.3.0',
-        layers: 'ALERTS',
-        query_layers: 'ALERTS',
+        layers: layer.wmsParams.layers,
+        query_layers: layer.wmsParams.layers,
         styles: '',
         bbox: `${sw.lng},${sw.lat},${ne.lng},${ne.lat}`,
         width: size.x,
@@ -32,6 +32,7 @@ function getFeatureInfoUrl(map, layer, latlng) {
     };
     return layer._url + L.Util.getParamString(params, layer._url, true);
   }
+  console.log("Layer:", layer);
 
   map.on("click", function (e) {
     const url = getFeatureInfoUrl(map, weatheralerts, e.latlng);
