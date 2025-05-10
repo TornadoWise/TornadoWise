@@ -8,26 +8,27 @@ var weatheralerts = L.tileLayer.wms("https://geo.weather.gc.ca/geomet?lang=en&se
 function getFeatureInfoUrl(map, layer, latlng) {
     const point = map.latLngToContainerPoint(latlng, map.getZoom());
     const size = map.getSize();
+    const bounds = map.getBounds();
+    const sw = bounds.getSouthWest();
+    const ne = bounds.getNorthEast();
   
     const params = {
         request: 'GetFeatureInfo',
         service: 'WMS',
-        srs: 'EPSG:3857',
-        styles: '',
-        transparent: true,
         version: '1.3.0',
-        format: 'image/png',
-        bbox: map.getBounds().toBBoxString(),
-        height: size.y,
-        width: size.x,
         layers: layer.wmsParams.layers,
-        query_layers: layer.wmsParams.layers,
+        styles: '',
+        bbox: `${sw.lng},${sw.lat},${ne.lng},${ne.lat}`,
+        width: size.x,
+        height: size.y,
+        format: 'image/png',
         info_format: 'text/plain',
-        i: point.x,
-        j: point.y,
-        feature_count: 10
+        transparent: true,
+        feature_count: 10,
+        CRS: 'EPSG:4326',
+        i: Math.floor(point.x),
+        j: Math.floor(point.y)
     };
-  
     return layer._url + L.Util.getParamString(params, layer._url, true);
   }
 
@@ -37,26 +38,13 @@ function getFeatureInfoUrl(map, layer, latlng) {
     fetch(url)
     .then(res => res.text())
     .then(text => {
-        L.popup().setLatLng(e.latlng).setContent(`<pre>${text}</pre>`).openOn(map);
-    })
-      .then(data => {
-        const features = data.features;
-        if (!features || features.length === 0) {
-          L.popup().setLatLng(e.latlng).setContent("No alerts at this location.").openOn(map);
-          return;
-        }
-  
-        const f = features[0].properties;
-        const content = `
-          <b>${f.area}</b><br>
-          <strong>${f.headline}</strong><br>
-          <p>${f.descrip_en}</p>
-        `;
-
-        L.popup().setLatLng(e.latlng).setContent(content).openOn(map);
+        L.popup()
+            .setLatLng(e.latlng)
+            .setContent(`<pre>${text}</pre>`)
+            .openOn(map);
     })
     .catch(err => {
-        console.error("Error fetching FeatureInfo", err);
+        console.error("FeatureInfo error:", err);
     });
 });
 
