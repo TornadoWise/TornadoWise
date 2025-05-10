@@ -27,12 +27,12 @@ const meantemp = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?servi
     attribution: "© Environment and Climate Change Canada"
 });
 
-function createLegendControl(wmsUrl, layerName, titleText) {
+function createLegendControl(wmsUrl, layerName, style, titleText) {
     return function () {
         const div = L.DomUtil.create("div", "info legend");
         div.innerHTML = `
           <h4>${titleText}</h4>
-          <img src="${wmsUrl}?service=WMS&version=1.3.0&request=GetLegendGraphic&format=image/png&layer=${layerName}" alt="${titleText} Legend">
+          <img src="${wmsUrl}?service=WMS&version=1.3.0&request=GetLegendGraphic&&sld_version=1.1.0&layer=${layerName}&format=image/png&STYLE=${style}" alt="${titleText} Legend">
         `;
         return div;
       };
@@ -45,10 +45,10 @@ function createLegendControl(wmsUrl, layerName, titleText) {
     "Mean Temperature in the Summer": L.control({ position: "bottomleft" })
   };
   
-  legends["Weather Alerts"].onAdd = createLegendControl("https://geo.weather.gc.ca/geomet","ALERTS", "Weather Alerts");
-  legends["Days above 30&degC"].onAdd = createLegendControl("https://geo.weather.gc.ca/geomet-climate","hotdays", "Days above 30&degC");
-  legends["Total Precipitation in the Summer"].onAdd = createLegendControl("https://geo.weather.gc.ca/geomet-climate","totalprecip", "Total Precipitation in the Summer");
-  legends["Mean Temperature in the Summer"].onAdd = createLegendControl("https://geo.weather.gc.ca/geomet-climate","meantemp", "Mean Temperature in the Summer");
+  legends["Weather Alerts"].onAdd = createLegendControl("https://geo.weather.gc.ca/geomet","ALERTS", "ALERTS", "Weather Alerts");
+  legends["Days above 30&degC"].onAdd = createLegendControl("https://geo.weather.gc.ca/geomet-climate","INDICES.TX30.HISTO_PCTL50", "TX30_TN20","Days above 30&degC");
+  legends["Total Precipitation in the Summer"].onAdd = createLegendControl("https://geo.weather.gc.ca/geomet-climate","CANGRD.TREND.PR_SUMMER", "PRECIP-ANOMALY", "Total Precipitation in the Summer");
+  legends["Mean Temperature in the Summer"].onAdd = createLegendControl("https://geo.weather.gc.ca/geomet-climate","CANGRD.TREND.TM_SUMMER", "TEMP-ANOMALIES", "Mean Temperature in the Summer");
 
 const overlaymaps = {
     "Weather Alerts": weatheralerts,
