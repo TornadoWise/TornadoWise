@@ -32,14 +32,14 @@ L.tileLayer(`https://tile.openstreetmap.org/{z}/{x}/{y}.png`, {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
 
-var provinces = L.tileLayer
-    .wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
-        layers: "provinces_names",
-        format: "image/png",
-        transparent: true,
-        attribution: "© Natural Resources Canada",
-    })
-    .addTo(map);
+// var provinces = L.tileLayer
+//     .wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
+//         layers: "provinces_names",
+//         format: "image/png",
+//         transparent: true,
+//         attribution: "© Natural Resources Canada",
+//     })
+//     .addTo(map);
 
 // var placename1 = L.tileLayer
 //     .wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
