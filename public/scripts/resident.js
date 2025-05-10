@@ -32,17 +32,17 @@ function createLegendControl(wmsUrl, layerName, style, titleText) {
         const div = L.DomUtil.create("div", "info legend");
         div.innerHTML = `
           <h4>${titleText}</h4>
-          <img src="${wmsUrl}?service=WMS&version=1.3.0&request=GetLegendGraphic&&sld_version=1.1.0&layer=${layerName}&format=image/png&STYLE=${style}" alt="${titleText} Legend">
+          <img src="${wmsUrl}?service=WMS&version=1.3.0&request=GetLegendGraphic&sld_version=1.1.0&layer=${layerName}&format=image/png&STYLE=${style}" alt="${titleText} Legend">
         `;
         return div;
       };
     }
 
   const legends = {
-    "Weather Alerts": L.control({ position: "bottomleft" }),
-    "Days above 30&degC": L.control({ position: "bottomleft" }),
-    "Total Precipitation in the Summer": L.control({ position: "bottomleft" }),
-    "Mean Temperature in the Summer": L.control({ position: "bottomleft" })
+    "Weather Alerts": L.control({ position: "left" }),
+    "Days above 30&degC": L.control({ position: "left" }),
+    "Total Precipitation in the Summer": L.control({ position: "left" }),
+    "Mean Temperature in the Summer": L.control({ position: "left" })
   };
   
   legends["Weather Alerts"].onAdd = createLegendControl("https://geo.weather.gc.ca/geomet","ALERTS", "ALERTS", "Weather Alerts");
