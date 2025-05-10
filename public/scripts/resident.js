@@ -14,21 +14,22 @@ function getFeatureInfoUrl(map, layer, latlng) {
   
     const params = {
         request: 'GetFeatureInfo',
-        service: 'WMS',
-        version: '1.3.0',
-        layers: layer.wmsParams.layers,
-        query_layers: layer.wmsParams.layers,
-        styles: '',
         bbox: `${sw.lng},${sw.lat},${ne.lng},${ne.lat}`,
+        CRS: 'EPSG:3857',
         width: size.x,
         height: size.y,
+        layers: layer.wmsParams.layers,
+        query_layers: layer.wmsParams.layers,
         format: 'image/png',
         info_format: 'text/plain',
-        transparent: true,
-        feature_count: 10,
-        CRS: 'EPSG:3857',
         i: Math.floor(point.x),
         j: Math.floor(point.y)
+       
+        //service: 'WMS',
+        //version: '1.3.0',
+        //styles: '',
+        //transparent: true,
+        //feature_count: 10,
     };
     return layer._url + L.Util.getParamString(params, layer._url, true);
   }
