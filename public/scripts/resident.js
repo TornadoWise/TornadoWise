@@ -10,25 +10,23 @@ function getFeatureInfoUrl(map, layer, latlng) {
     const size = map.getSize();
   
     const params = {
-      request: "GetFeatureInfo",
-      service: "WMS",
-      srs: "EPSG:4326",
-      styles: "",
-      transparent: true,
-      version: "1.3.0",
-      format: "image/png",
-      bbox: map.getBounds().toBBoxString(),
-      height: size.y,
-      width: size.x,
-      layers: layer.wmsParams.layers,
-      query_layers: layer.wmsParams.layers,
-      info_format: "application/json",
-      feature_count: 10
+        request: 'GetFeatureInfo',
+        service: 'WMS',
+        srs: 'EPSG:3857',
+        styles: '',
+        transparent: true,
+        version: '1.3.0',
+        format: 'image/png',
+        bbox: map.getBounds().toBBoxString(),
+        height: size.y,
+        width: size.x,
+        layers: layer.wmsParams.layers,
+        query_layers: layer.wmsParams.layers,
+        info_format: 'application/json',
+        i: point.x,
+        j: point.y,
+        feature_count: 10
     };
-
-    params.crs = "EPSG:4326";
-    params.i = point.x;
-    params.j = point.y;
   
     return layer._url + L.Util.getParamString(params, layer._url, true);
   }
@@ -44,57 +42,19 @@ function getFeatureInfoUrl(map, layer, latlng) {
           return;
         }
   
-        let activeAlert = 0;
-        const totalAlerts = features.length;
-  
-        function buildPopupContent(i) {
-          const f = features[i].properties;
-          const effective = new Date(f.effective).toLocaleString();
-          const expires = new Date(f.expires).toLocaleString();
-          return `
-            <div id="alert-content">
-              <b>${f.area || 'Area'}:</b> ${f.area}<br>
-              <b>Headline:</b> ${f.headline}<br>
-              <b>Type:</b> ${f.alert_type}<br>
-              <b>Effective:</b> ${effective}<br>
-              <b>Expires:</b> ${expires}<br><br>
-              <div><b>Description:</b><br>${f.descrip_en}</div><br>
-              <div style="text-align:center">
-                <button id="prev-btn" ${i === 0 ? "disabled" : ""}>⬅</button>
-                <span>Alert ${i + 1} of ${totalAlerts}</span>
-                <button id="next-btn" ${i === totalAlerts - 1 ? "disabled" : ""}>➡</button>
-              </div>
-            </div>
-          `;
-        }
-  
-        const popup = L.popup().setLatLng(e.latlng).setContent(buildPopupContent(activeAlert)).openOn(map);
-  
-        function attachNavHandlers() {
-          document.getElementById("prev-btn")?.addEventListener("click", () => {
-            if (activeAlert > 0) {
-              activeAlert--;
-              popup.setContent(buildPopupContent(activeAlert));
-              attachNavHandlers();
-            }
-          });
-  
-          document.getElementById("next-btn")?.addEventListener("click", () => {
-            if (activeAlert < totalAlerts - 1) {
-              activeAlert++;
-              popup.setContent(buildPopupContent(activeAlert));
-              attachNavHandlers();
-            }
-          });
-        }
-  
-        attachNavHandlers();
-      })
-      .catch(err => {
-        console.error("GetFeatureInfo error", err);
-        L.popup().setLatLng(e.latlng).setContent("Error loading alert data.").openOn(map);
-      });
-  });
+        const f = features[0].properties;
+        const content = `
+          <b>${f.area}</b><br>
+          <strong>${f.headline}</strong><br>
+          <p>${f.descrip_en}</p>
+        `;
+
+        L.popup().setLatLng(e.latlng).setContent(content).openOn(map);
+    })
+    .catch(err => {
+        console.error("Error fetching FeatureInfo", err);
+    });
+});
 
 var hotdays = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS&version=1.3.0", {
     layers: "INDICES.TX30.HISTO_PCTL50",
