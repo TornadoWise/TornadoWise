@@ -1,8 +1,59 @@
-var weatheralerts = L.tileLayer.wms("https://geo.weather.gc.ca/geomet?lang=en&service=WMS", {
+var weatheralerts = L.tileLayer.wms("https://geo.weather.gc.ca/geomet?lang=en&service=WMS&version=1.3.0", {
     layers: "ALERTS",
     format: "image/png",
     transparent: true,
     attribution: "© Environment and Climate Change Canada",
+}).addTo(map);
+
+function getFeatureInfoUrl(map, layer, latlng) {
+    const point = map.latLngToContainerPoint(latlng, map.getZoom());
+    const size = map.getSize();
+  
+    const params = {
+        request: 'GetFeatureInfo',
+        service: 'WMS',
+        srs: 'EPSG:3857',
+        styles: '',
+        transparent: true,
+        version: '1.3.0',
+        format: 'image/png',
+        bbox: map.getBounds().toBBoxString(),
+        height: size.y,
+        width: size.x,
+        layers: layer.wmsParams.layers,
+        query_layers: layer.wmsParams.layers,
+        info_format: 'application/json',
+        i: point.x,
+        j: point.y,
+        feature_count: 10
+    };
+  
+    return layer._url + L.Util.getParamString(params, layer._url, true);
+  }
+
+  map.on("click", function (e) {
+    const url = getFeatureInfoUrl(map, weatheralerts, e.latlng);
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        const features = data.features;
+        if (!features || features.length === 0) {
+          L.popup().setLatLng(e.latlng).setContent("No alerts at this location.").openOn(map);
+          return;
+        }
+  
+        const f = features[0].properties;
+        const content = `
+          <b>${f.area}</b><br>
+          <strong>${f.headline}</strong><br>
+          <p>${f.descrip_en}</p>
+        `;
+
+        L.popup().setLatLng(e.latlng).setContent(content).openOn(map);
+    })
+    .catch(err => {
+        console.error("Error fetching FeatureInfo", err);
+    });
 });
 
 var hotdays = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS&version=1.3.0", {
@@ -27,7 +78,7 @@ var meantemp = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service
 });
 
 var overlaymaps = {
-    "Weather Alerts": weatheralerts,
+    //"Weather Alerts": weatheralerts,
     "Days above 30&degC": hotdays,
     "Total Precipitation in the Summer": totalprecip,
     "Mean Temperature in the Summer": meantemp,
@@ -49,62 +100,3 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(map);
-
-map.on('click', function (e) {
-    var url = getFeatureInfoUrl(
-        map,
-        weatheralerts,
-        e.latlng,
-        {
-            'info_format': 'text/html', 
-            'propertyName': 'event,headline,description'
-        }
-    );
-
-    fetch(url)
-        .then(response => response.text())
-        .then(html => {
-            if (html) {
-                L.popup()
-                    .setLatLng(e.latlng)
-                    .setContent(html)
-                    .openOn(map);
-            }
-        });
-});
-
-function getFeatureInfoUrl(map, layer, latlng, params) {
-    var point = map.latLngToContainerPoint(latlng, map.getZoom());
-    var size = map.getSize();
-
-    var baseParams = {
-        request: 'GetFeatureInfo',
-        service: 'WMS',
-        srs: 'EPSG:4326',
-        styles: '',
-        transparent: true,
-        version: '1.3.0',
-        format: 'image/png',
-        bbox: map.getBounds().toBBoxString(),
-        height: size.y,
-        width: size.x,
-        layers: layer.wmsParams.layers,
-        query_layers: layer.wmsParams.layers,
-        info_format: 'text/html'
-    };
-
-    if (baseParams.version === "1.3.0") {
-        baseParams.crs = 'EPSG:4326';
-        baseParams.i = point.x;
-        baseParams.j = point.y;
-    } else {
-        baseParams.x = point.x;
-        baseParams.y = point.y;
-    }
-
-    Object.assign(baseParams, params);
-
-    return layer._url + L.Util.getParamString(baseParams, layer._url, true);
-}
-
-
