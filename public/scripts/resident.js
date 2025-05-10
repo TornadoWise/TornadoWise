@@ -33,6 +33,7 @@ function getFeatureInfoUrl(map, layer, latlng) {
 
   map.on("click", function (e) {
     const url = getFeatureInfoUrl(map, weatheralerts, e.latlng);
+    console.log("GetFeatureInfo URL:", url);
     fetch(url)
       .then(res => res.json())
       .then(data => {
