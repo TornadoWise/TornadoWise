@@ -9,6 +9,10 @@
     max-width: 250px;
 }
 
+.nav-toggle {
+    display: none;
+}
+
 .nav-container {
     height: auto;
     background-color: var(--nav-bg-color);
