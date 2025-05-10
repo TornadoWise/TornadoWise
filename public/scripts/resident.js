@@ -17,6 +17,7 @@ function getFeatureInfoUrl(map, layer, latlng) {
         service: 'WMS',
         version: '1.3.0',
         layers: layer.wmsParams.layers,
+        query_layers: layer.wmsParams.layers,
         styles: '',
         bbox: `${sw.lng},${sw.lat},${ne.lng},${ne.lat}`,
         width: size.x,
