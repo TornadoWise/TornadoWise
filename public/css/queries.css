@@ -1,10 +1,18 @@
-@media (max-width: 1000px) {
+@media (max-width: 850px) {
     body {
-        /* background-color: red; */
+        background-color: red;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .nav-container {
-        display: block;
+        visibility: collapse;
+        display: flex;
+        flex-direction: column;
         text-align: center;
     }
 
