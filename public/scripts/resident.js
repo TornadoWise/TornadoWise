@@ -3,86 +3,41 @@ var weatheralerts = L.tileLayer.wms("https://geo.weather.gc.ca/geomet?lang=en&se
     format: "image/png",
     transparent: true,
     attribution: "© Environment and Climate Change Canada",
-}).addTo(map);
-
-function getFeatureInfoUrl(map, layer, latlng) {
-    const point = map.latLngToContainerPoint(latlng, map.getZoom());
-    const size = map.getSize();
-    const bounds = map.getBounds();
-    const sw = bounds.getSouthWest();
-    const ne = bounds.getNorthEast();
-  
-    const params = {
-        request: 'GetFeatureInfo',
-        bbox: map.getBounds().toBBoxString(),
-        CRS: 'EPSG:3857',
-        width: size.x,
-        height: size.y,
-        layers: layer.wmsParams.layers,
-        query_layers: layer.wmsParams.layers,
-        format: 'image/png',
-        info_format: 'text/plain',
-        i: Math.floor(point.x),
-        j: Math.floor(point.y)
-       
-        //service: 'WMS',
-        //version: '1.3.0',
-        //styles: '',
-        //transparent: true,
-        //feature_count: 10,
-    };
-    return layer._url + L.Util.getParamString(params, layer._url, true);
-  }
-  console.log("Layer:", layer);
-
-  map.on("click", function (e) {
-    const url = getFeatureInfoUrl(map, weatheralerts, e.latlng);
-    console.log("GetFeatureInfo URL:", url);
-    fetch(url)
-    .then(res => res.text())
-    .then(text => {
-        L.popup()
-            .setLatLng(e.latlng)
-            .setContent(`<pre>${text}</pre>`)
-            .openOn(map);
-    })
-    .catch(err => {
-        console.error("FeatureInfo error:", err);
-    });
+    opacity: 0.7
 });
 
 var hotdays = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS&version=1.3.0", {
     layers: "INDICES.TX30.HISTO_PCTL50",
     format: "image/png",
     transparent: true,
-    attribution: "© Environment and Climate Change Canada",
+    attribution: "© Environment and Climate Change Canada"
 });
 
 var totalprecip = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS&version=1.3.0", {
     layers: "CANGRD.TREND.PR_SUMMER",
     format: "image/png",
     transparent: true,
-    attribution: "© Environment and Climate Change Canada",
+    attribution: "© Environment and Climate Change Canada"
 });
 
 var meantemp = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS&version=1.3.0", {
     layers: "CANGRD.TREND.TM_SUMMER",
     format: "image/png",
     transparent: true,
-    attribution: "© Environment and Climate Change Canada",
+    attribution: "© Environment and Climate Change Canada"
 });
 
 var overlaymaps = {
-    //"Weather Alerts": weatheralerts,
+    "Weather Alerts": weatheralerts,
     "Days above 30&degC": hotdays,
     "Total Precipitation in the Summer": totalprecip,
-    "Mean Temperature in the Summer": meantemp,
+    "Mean Temperature in the Summer": meantemp
 };
 
 L.control.layers(null, overlaymaps).addTo(map);
 
 var legend = L.control({
-    position: "bottomleft",
+    position: "bottomleft"
 });
 
 legend.onAdd = function (map) {
@@ -95,3 +50,17 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(map);
+
+map.on('overlayadd', function (e) {
+    if (e.name === "Weather Alerts") {
+        map.once('click', function (ev) {
+          L.popup()
+            .setLatLng(ev.latlng)
+            .setContent(`
+          <strong>Weather Alerts Info</strong><br>
+          <a href="https://weather.gc.ca/?layers=alert&zoom=3&center=60.34823086,-87.47019873" target="_blank">Click here to view active alerts</a>
+        `)
+        .openOn(map);
+    });
+  }
+}); 
