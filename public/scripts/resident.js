@@ -26,7 +26,7 @@ function getFeatureInfoUrl(map, layer, latlng) {
         info_format: 'text/plain',
         transparent: true,
         feature_count: 10,
-        CRS: 'EPSG:4326',
+        CRS: 'EPSG:3857',
         i: Math.floor(point.x),
         j: Math.floor(point.y)
     };
