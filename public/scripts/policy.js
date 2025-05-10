@@ -137,7 +137,7 @@ function createLegendControl({ title, wmsUrl = null, layer = null, directUrl = n
     style: "default"
   });
   
-  legends["Landcover"].onAdd = createLegendControl({
+  legends["Land Cover"].onAdd = createLegendControl({
     title: "Land Cover",
     directUrl: "https://datacube.services.geo.ca/assets/legend/legend_landcover_color.png"
   });
