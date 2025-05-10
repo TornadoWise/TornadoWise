@@ -79,7 +79,6 @@ h3 {
     position: relative;
 }
 
-h1::after,
 h2::after,
 h3::after {
     content: "";
@@ -92,7 +91,6 @@ h3::after {
     transition: width 1s;
 }
 
-h1:hover:after,
 h2:hover:after,
 h3:hover:after {
     width: 100%;
