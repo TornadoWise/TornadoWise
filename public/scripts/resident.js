@@ -32,7 +32,7 @@ function getFeatureInfoUrl(map, layer, latlng) {
     };
     return layer._url + L.Util.getParamString(params, layer._url, true);
   }
-  console.log(layer.wmsParams.layers)
+  console.log("Layer:", layer);
 
   map.on("click", function (e) {
     const url = getFeatureInfoUrl(map, weatheralerts, e.latlng);
