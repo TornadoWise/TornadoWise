@@ -85,6 +85,11 @@ section {
     padding: 5px;
 }
 
+.about-content {
+    display: flex;
+    flex-direction: column;
+}
+
 .theTeam {
 }
 
