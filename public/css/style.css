@@ -42,6 +42,7 @@
     align-items: center;
     justify-content: space-around;
     height: 400px;
+    /* Martha change this for updating hero image (map background) */
     background-image: url("../images/hero.png");
     border-radius: 0;
 }
@@ -55,6 +56,27 @@
     width: 25rem;
     height: 10rem;
     padding: 25px;
+    position: relative;
+
+    animation-name: easeFromTop;
+    animation-duration: 2s;
+}
+
+.hero-heading,
+.hero-para,
+.gt-buttons {
+    position: relative;
+    animation-name: easeFromTop;
+    animation-duration: 2s;
+}
+
+@keyframes easeFromTop {
+    from {
+        top: -20px;
+    }
+    to {
+        top: 0;
+    }
 }
 
 section {
@@ -127,11 +149,29 @@ section {
 }
 
 .gt-residents {
+    transition-property: background-color, border-color, color;
+    transition-duration: 1s;
     background-color: #006100;
 }
 
+.gt-residents:hover {
+    background-color: white;
+    color: #006100;
+    border-color: #006100;
+    cursor: pointer;
+}
+
 .gt-policymakers {
+    transition-property: background-color, border-color, color;
+    transition-duration: 1s;
     background-color: #123c69;
+}
+
+.gt-policymakers:hover {
+    background-color: white;
+    color: #123c69;
+    border-color: #123c69;
+    cursor: pointer;
 }
 
 .copyright {
@@ -146,7 +186,6 @@ section {
 .main-container {
     display: flex;
     justify-content: center;
-    border-bottom: #000000 solid 1px;
 }
 
 .residents-container {
@@ -203,6 +242,17 @@ section {
 
 .footer-nav-item a:hover {
     text-decoration: underline;
+}
+
+.footer-logo-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-logo {
+    display: inline-block;
+    max-width: 64px;
+    max-height: 64px;
 }
 
 .leaflet-control-layers-list {

@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     --primary-color: #d9b08c;
     --heading-bg-color: aliceblue;
     --nav-bg-color: white;
@@ -51,6 +52,10 @@ footer {
     background-color: black;
     color: #fff;
     margin-top: auto;
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 article {
@@ -69,5 +74,26 @@ h1 {
 h1,
 h2,
 h3 {
+    display: inline-block;
     color: var(--heading-color);
+    position: relative;
+}
+
+h1::after,
+h2::after,
+h3::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    background-color: #734a26;
+    transition: width 1s;
+}
+
+h1:hover:after,
+h2:hover:after,
+h3:hover:after {
+    width: 100%;
 }
