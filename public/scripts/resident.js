@@ -27,7 +27,7 @@ const meantemp = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?servi
     attribution: "© Environment and Climate Change Canada"
 });
 
-function createLegendControl(layerName, titleText) {
+function createLegendControl(wmsUrl, layerName, titleText) {
     return function () {
         const div = L.DomUtil.create("div", "info legend");
         div.innerHTML = `
@@ -66,21 +66,10 @@ map.on("overlayadd", function (e) {
   map.on("overlayremove", function (e) {
     if (legends[e.name]) map.removeControl(legends[e.name]);
   });
-  
+
 var legend = L.control({
     position: "bottomleft"
 });
-
-// legend.onAdd = function (map) {
-//     var div = L.DomUtil.create("div", "legend");
-//     div.innerHTML += "<h4>Weather Alerts</h4>";
-//     div.innerHTML += '<i style="background: #BB0000"></i><span>Warning</span><br>';
-//     div.innerHTML += '<i style="background: #FFFF00"></i><span>Watch</span><br>';
-//     div.innerHTML += '<i style="background: #707070"></i><span>Statement</span><br>';
-//     return div;
-// };
-
-// legend.addTo(map);
 
 map.on('overlayadd', function (e) {
     if (e.name === "Weather Alerts") {
