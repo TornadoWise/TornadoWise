@@ -28,16 +28,16 @@ const meantemp = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?servi
 });
 
 function createLegendControl(layerName, titleText) {
-    return L.control({ position: "bottomleft" }).onAdd = function (map) {
-      const div = L.DomUtil.create("div", "info legend");
-      div.innerHTML = `
-        <h4>${titleText}</h4>
-        <img src="https://geo.weather.gc.ca/geomet?service=WMS&version=1.3.0&request=GetLegendGraphic&format=image/png&layer=${layerName}" alt="${titleText} Legend">
-      `;
-      return div;
-    };
-  }
-  
+    return function () {
+        const div = L.DomUtil.create("div", "info legend");
+        div.innerHTML = `
+          <h4>${titleText}</h4>
+          <img src="${wmsUrl}?service=WMS&version=1.3.0&request=GetLegendGraphic&format=image/png&layer=${layerName}" alt="${titleText} Legend">
+        `;
+        return div;
+      };
+    }
+
   const legends = {
     "Weather Alerts": L.control({ position: "bottomleft" }),
     "Days above 30&degC": L.control({ position: "bottomleft" }),
@@ -45,10 +45,10 @@ function createLegendControl(layerName, titleText) {
     "Mean Temperature in the Summer": L.control({ position: "bottomleft" })
   };
   
-  legends["Weather Alerts"].onAdd = createLegendControl("ALERTS", "Weather Alerts");
-  legends["Days above 30&degC"].onAdd = createLegendControl("hotdays", "Days above 30&degC");
-  legends["Total Precipitation in the Summer"].onAdd = createLegendControl("totalprecip", "Total Precipitation in the Summer");
-  legends["Mean Temperature in the Summer"].onAdd = createLegendControl("meantemp", "Mean Temperature in the Summer");
+  legends["Weather Alerts"].onAdd = createLegendControl("https://geo.weather.gc.ca/geomet","ALERTS", "Weather Alerts");
+  legends["Days above 30&degC"].onAdd = createLegendControl("https://geo.weather.gc.ca/geomet-climate","hotdays", "Days above 30&degC");
+  legends["Total Precipitation in the Summer"].onAdd = createLegendControl("https://geo.weather.gc.ca/geomet-climate","totalprecip", "Total Precipitation in the Summer");
+  legends["Mean Temperature in the Summer"].onAdd = createLegendControl("https://geo.weather.gc.ca/geomet-climate","meantemp", "Mean Temperature in the Summer");
 
 const overlaymaps = {
     "Weather Alerts": weatheralerts,
@@ -60,15 +60,13 @@ const overlaymaps = {
 L.control.layers(null, overlaymaps).addTo(map);
 
 map.on("overlayadd", function (e) {
-    const legend = legends[e.name];
-    if (legend) legend.addTo(map);
+    if (legends[e.name]) legends[e.name].addTo(map);
   });
   
   map.on("overlayremove", function (e) {
-    const legend = legends[e.name];
-    if (legend) map.removeControl(legend);
+    if (legends[e.name]) map.removeControl(legends[e.name]);
   });
-
+  
 var legend = L.control({
     position: "bottomleft"
 });
