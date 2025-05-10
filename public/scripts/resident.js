@@ -22,7 +22,7 @@ function getFeatureInfoUrl(map, layer, latlng) {
         width: size.x,
         layers: layer.wmsParams.layers,
         query_layers: layer.wmsParams.layers,
-        info_format: 'application/json',
+        info_format: 'text/plain',
         i: point.x,
         j: point.y,
         feature_count: 10
@@ -37,7 +37,7 @@ function getFeatureInfoUrl(map, layer, latlng) {
     fetch(url)
     .then(res => res.text())
     .then(text => {
-      console.log(text);
+        L.popup().setLatLng(e.latlng).setContent(`<pre>${text}</pre>`).openOn(map);
     })
       .then(data => {
         const features = data.features;
