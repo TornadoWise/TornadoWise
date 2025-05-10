@@ -14,7 +14,7 @@ function getFeatureInfoUrl(map, layer, latlng) {
   
     const params = {
         request: 'GetFeatureInfo',
-        bbox: `${sw.lng},${sw.lat},${ne.lng},${ne.lat}`,
+        bbox: map.getBounds().toBBoxString(),
         CRS: 'EPSG:3857',
         width: size.x,
         height: size.y,
@@ -22,8 +22,8 @@ function getFeatureInfoUrl(map, layer, latlng) {
         query_layers: layer.wmsParams.layers,
         format: 'image/png',
         info_format: 'text/plain',
-        //i: Math.floor(point.x),
-        //j: Math.floor(point.y)
+        i: Math.floor(point.x),
+        j: Math.floor(point.y)
        
         //service: 'WMS',
         //version: '1.3.0',
