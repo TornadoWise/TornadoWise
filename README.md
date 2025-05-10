@@ -59,6 +59,11 @@ In the terminal, you should see "Listening on port 8080."
 
 ## Attribution
 
-This project uses [Font Awesome Free](https://fontawesome.com) icons, which are licensed under the [Creative Commons Attribution 4.0 International license (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
+This project includes icons from [Font Awesome Free](https://fontawesome.com/icons), licensed under the [Creative Commons Attribution 4.0 International license](https://creativecommons.org/licenses/by/4.0/).
 
-Some icons have been modified for styling and layout purposes.
+Modifications made:
+
+-   Recolored icons to match site branding
+-   Optimized SVGs for reduced file size
+
+Original icons © Fonticons, Inc.
