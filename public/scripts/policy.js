@@ -1,31 +1,3 @@
-var transformers1 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
-    layers: "transformerstation_250k",
-    format: "image/png",
-    transparent: true,
-    attribution: "© National Resources Canada",
-}).addTo(map);
-
-var transformers2 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
-    layers: "transformer_station_point_50k",
-    format: "image/png",
-    transparent: true,
-    attribution: "© National Resources Canada",
-}).addTo(map);
-
-var powerlines1 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
-    layers: "powerline_50k",
-    format: "image/png",
-    transparent: true,
-    attribution: "© National Resources Canada",
-}).addTo(map);
-
-var powerlines2 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
-    layers: "powerline_50k",
-    format: "image/png",
-    transparent: true,
-    attribution: "© National Resources Canada",
-}).addTo(map);
-
 var wthstation = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS", {
     layers: "AHCCD.STATIONS",
     format: "image/png",
@@ -219,6 +191,32 @@ map.on("overlayadd", function (e) {
     if (legends[e.name]) map.removeControl(legends[e.name]);
   });
 
+  var transformers1 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
+    layers: "transformerstation_250k",
+    format: "image/png",
+    transparent: true,
+    attribution: "© National Resources Canada",
+}).addTo(map);
 
+var transformers2 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
+    layers: "transformer_station_point_50k",
+    format: "image/png",
+    transparent: true,
+    attribution: "© National Resources Canada",
+}).addTo(map);
+
+var powerlines1 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
+    layers: "powerline_50k",
+    format: "image/png",
+    transparent: true,
+    attribution: "© National Resources Canada",
+}).addTo(map);
+
+var powerlines2 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
+    layers: "powerline_50k",
+    format: "image/png",
+    transparent: true,
+    attribution: "© National Resources Canada",
+}).addTo(map);
 
 
