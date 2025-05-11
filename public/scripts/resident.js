@@ -39,10 +39,10 @@ function createLegendControl(wmsUrl, layerName, style, titleText) {
     }
 
   const legends = {
-    "Weather Alerts": L.control({ position: "left" }),
-    "Days above 30&degC": L.control({ position: "left" }),
-    "Total Precipitation in the Summer": L.control({ position: "left" }),
-    "Mean Temperature in the Summer": L.control({ position: "left" })
+    "Weather Alerts": L.control({ position: "bottomleft" }),
+    "Days above 30&degC": L.control({ position: "bottomleft" }),
+    "Total Precipitation in the Summer": L.control({ position: "bottomleft" }),
+    "Mean Temperature in the Summer": L.control({ position: "bottomleft" })
   };
   
   legends["Weather Alerts"].onAdd = createLegendControl("https://geo.weather.gc.ca/geomet","ALERTS", "ALERTS", "Weather Alerts");

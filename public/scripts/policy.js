@@ -1,31 +1,3 @@
-var transformers1 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
-    layers: "transformerstation_250k",
-    format: "image/png",
-    transparent: true,
-    attribution: "© National Resources Canada",
-}).addTo(map);
-
-var transformers2 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
-    layers: "transformer_station_point_50k",
-    format: "image/png",
-    transparent: true,
-    attribution: "© National Resources Canada",
-}).addTo(map);
-
-var powerlines1 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
-    layers: "powerline_50k",
-    format: "image/png",
-    transparent: true,
-    attribution: "© National Resources Canada",
-}).addTo(map);
-
-var powerlines2 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
-    layers: "powerline_50k",
-    format: "image/png",
-    transparent: true,
-    attribution: "© National Resources Canada",
-}).addTo(map);
-
 var wthstation = L.tileLayer.wms("https://geo.weather.gc.ca/geomet-climate?service=WMS", {
     layers: "AHCCD.STATIONS",
     format: "image/png",
@@ -118,16 +90,16 @@ function createLegendControl({ title, wmsUrl = null, layer = null, directUrl = n
   }
 
   const legends = {
-    "Weather Stations": L.control({ position: "left" }),
-    "Land Cover": L.control({ position: "left" }),
-    "Average Home Value": L.control({ position: "left" }),
-    "Probability of Above Normal Temperature": L.control({ position: "left" }),
-    "Precipation at or Above 10mm": L.control({ position: "left" }),
-    "Days with Temperatures Above 30&degC": L.control({ position: "left" }),
-    "Nights Above 20&degC": L.control({ position: "left" }),
-    "Historical Mean Precipitation": L.control({ position: "left" }),
-    "Historical Changes in Temperature": L.control({ position: "left" }),
-    "Historical Changes in Wind": L.control({ position: "left" })
+    "Weather Stations": L.control({ position: "bottomleft" }),
+    "Land Cover": L.control({ position: "bottomleft" }),
+    "Average Home Value": L.control({ position: "bottomleft" }),
+    "Probability of Above Normal Temperature": L.control({ position: "bottomleft" }),
+    "Precipation at or Above 10mm": L.control({ position: "bottomleft" }),
+    "Days with Temperatures Above 30&degC": L.control({ position: "bottomleft" }),
+    "Nights Above 20&degC": L.control({ position: "bottomleft" }),
+    "Historical Mean Precipitation": L.control({ position: "bottomleft" }),
+    "Historical Changes in Temperature": L.control({ position: "bottomleft" }),
+    "Historical Changes in Wind": L.control({ position: "bottomleft" })
   };
   
   legends["Weather Stations"].onAdd = createLegendControl({
@@ -137,7 +109,7 @@ function createLegendControl({ title, wmsUrl = null, layer = null, directUrl = n
     style: "default"
   });
   
-  legends["Landcover"].onAdd = createLegendControl({
+  legends["Land Cover"].onAdd = createLegendControl({
     title: "Land Cover",
     directUrl: "https://datacube.services.geo.ca/assets/legend/legend_landcover_color.png"
   });
@@ -196,7 +168,7 @@ function createLegendControl({ title, wmsUrl = null, layer = null, directUrl = n
     style: "SFCWINDSPEED-ANOMALY"
   });
 
-var overlaymaps = {
+const overlaymaps = {
     "Weather Stations": wthstation,
     "Land Cover": landcover,
     "Average Home Value": homevalue,
@@ -219,6 +191,32 @@ map.on("overlayadd", function (e) {
     if (legends[e.name]) map.removeControl(legends[e.name]);
   });
 
+  var transformers1 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
+    layers: "transformerstation_250k",
+    format: "image/png",
+    transparent: true,
+    attribution: "© National Resources Canada",
+}).addTo(map);
 
+var transformers2 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
+    layers: "transformer_station_point_50k",
+    format: "image/png",
+    transparent: true,
+    attribution: "© National Resources Canada",
+}).addTo(map);
+
+var powerlines1 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
+    layers: "powerline_50k",
+    format: "image/png",
+    transparent: true,
+    attribution: "© National Resources Canada",
+}).addTo(map);
+
+var powerlines2 = L.tileLayer.wms("https://maps.geogratis.gc.ca/wms/canvec_en?service=WMS", {
+    layers: "powerline_50k",
+    format: "image/png",
+    transparent: true,
+    attribution: "© National Resources Canada",
+}).addTo(map);
 
 
