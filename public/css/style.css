@@ -1,3 +1,12 @@
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 18px;
+}
+.header-nav {
+    display: none;
+}
+
 .logo-container {
     display: flex;
     align-items: center;
@@ -10,7 +19,11 @@
 }
 
 .nav-toggle {
-    display: none;
+    display: block;
+}
+
+.nav-toggle:hover {
+    cursor: pointer;
 }
 
 .nav-container {
@@ -85,8 +98,11 @@
 }
 
 section {
-    text-align: center;
     padding: 5px;
+}
+
+.main-container {
+    display: flex;
 }
 
 .about-content {
@@ -103,8 +119,7 @@ section {
 }
 
 .team-container {
-    display: flex;
-    justify-content: center;
+    display: block;
 }
 
 .team-container section {
@@ -133,11 +148,6 @@ section {
     display: block;
     margin-bottom: 2px;
 }
-
-/* .team-container section p {
-    margin: 1rem;
-    color: red;
-}  */
 
 .gt-wrapper {
     padding: 1rem;
@@ -190,7 +200,15 @@ section {
 
 #map {
     min-height: 60vh;
-    width: 50vw;
+    width: 100%;
+}
+
+#searchField {
+    width: 100%;
+}
+
+.searchControls button {
+    width: 100%;
 }
 
 .residentHeading {
@@ -198,28 +216,11 @@ section {
     width: 100%;
 }
 
-.main-container {
-    display: flex;
-    justify-content: center;
-}
-
 .residents-container,
 .policy-container {
-    max-height: 900px;
-}
-
-.search {
     display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding: 1rem;
-}
-
-.searchControls {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 0.2rem;
-    margin-bottom: 0.2rem;
+    flex-direction: column-reverse;
+    width: 100%;
 }
 
 .goalPoints,
@@ -233,9 +234,6 @@ section {
 .goalPara,
 .projectPara {
     text-align: left;
-}
-
-.footer-nav-container {
 }
 
 .footer-nav {
@@ -273,4 +271,12 @@ section {
 
 .leaflet-control-layers-list {
     text-align: left;
+}
+
+.searchContainer {
+    width: 100%;
+}
+
+.fa-bars {
+    font-size: 30px;
 }

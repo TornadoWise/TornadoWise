@@ -1,68 +1,53 @@
-@media (max-width: 850px) {
-    body {
-        background-color: red;
-    }
-
+@media (min-width: 850px) {
     header {
         display: flex;
-        /* flex-direction: column; */
         justify-content: space-between;
-        align-items: center;
+    }
+
+    .header-nav {
+        display: block;
+    }
+    .navBar {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .nav-container {
+        display: flex;
+        flex-direction: none;
     }
 
     .nav-toggle {
-        display: block;
-    }
-
-    .nav-container {
-        visibility: collapse;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
+        display: none;
     }
 
     .team-container {
-        display: block;
-    }
-
-    .team-container section {
+        display: inline-flex;
+        justify-content: center;
     }
 
     .main-container {
-        max-width: 100%;
-        flex-direction: column-reverse;
+        display: flex;
+        justify-content: center;
+    }
+
+    .searchContainer {
+        width: 25%;
+    }
+
+    .residents-container,
+    .policy-container {
+        display: flex;
+        flex-direction: row;
     }
     #map {
-        width: inherit;
+        min-height: 60vh;
+        width: 100%;
+        height: 100%;
+        resize: both;
     }
 
     section {
-        max-width: 100%;
-    }
-
-    .search {
-    }
-
-    #searchFields {
-        min-width: 100%;
-    }
-
-    #searchField {
-        width: 100%;
-        height: 35px;
-        font-size: large;
-    }
-
-    .searchControls {
-        flex-direction: column;
-    }
-
-    .searchControls button {
+        padding: 5px;
     }
 }
-
-/* @media (min-width: 700px) {
-    .nav-container {
-        display: flex;
-    }
-} */

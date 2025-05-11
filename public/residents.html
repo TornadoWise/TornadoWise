@@ -9,6 +9,9 @@
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
+        <link href="css/all.min.css" rel="stylesheet" />
+        <link href="css/fontawesome.min.css" rel="stylesheet" />
+
         <!-- Internal -->
         <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/style.css" />
@@ -18,13 +21,19 @@
 
     <body>
         <header>
-            <div class="logo-container">
-                <a class="logo-clickable-link" href="index.html">
-                    <img class="logo" src="images/TornadoWise.png" alt="Tornado Wise Logo" />
-                </a>
+            <div class="navBar">
+                <div class="logo-container">
+                    <a class="logo-clickable-link" href="index.html">
+                        <img class="logo" src="images/TornadoWise.png" alt="Tornado Wise Logo" />
+                    </a>
+                </div>
+                <div class="nav-toggle">
+                    <i class="fa-solid fa-bars" id="naviToggle"></i>
+                </div>
             </div>
-            <nav>
-                <ul class="nav-container">
+
+            <nav class="header-nav" id="header-nav">
+                <ul class="nav-container" id="nav-container">
                     <li class="list-item"><a href="index.html">Home</a></li>
                     <li class="list-item"><a href="residents.html">Residents</a></li>
                     <li class="list-item"><a href="policymakers.html">Policy Makers</a></li>
@@ -36,10 +45,10 @@
 
         <h1 class="residentHeading">For Residents</h1>
 
-        <main class="main-container resident-container">
-            <article>
+        <main class="main-container residents-container">
+            <article class="searchContainer">
                 <section class="search">
-                    <div id="searchFields">
+                    <div class="searchFields">
                         <input type="text" id="searchField" />
                         <div class="searchControls">
                             <button onclick="useSearch()">Search</button>
@@ -78,6 +87,7 @@
             </div>
         </footer>
 
+        <script src="scripts/site.js"></script>
         <script src="./scripts/geoLocation.js" defer></script>
         <script src="./scripts/resident.js" defer></script>
     </body>

@@ -15,22 +15,25 @@
 
     <body>
         <header>
-            <div class="logo-container">
-                <a class="logo-clickable-link" href="index.html">
-                    <img class="logo" src="images/TornadoWise.png" alt="Tornado Wise Logo" />
-                </a>
+            <div class="navBar">
+                <div class="logo-container">
+                    <a class="logo-clickable-link" href="index.html">
+                        <img class="logo" src="images/TornadoWise.png" alt="Tornado Wise Logo" />
+                    </a>
+                </div>
+                <div class="nav-toggle">
+                    <i class="fa-solid fa-bars" id="naviToggle"></i>
+                </div>
             </div>
-            <nav>
-                <ul class="nav-container">
+
+            <nav class="header-nav" id="header-nav">
+                <ul class="nav-container" id="nav-container">
                     <li class="list-item"><a href="index.html">Home</a></li>
                     <li class="list-item"><a href="residents.html">Residents</a></li>
                     <li class="list-item"><a href="policymakers.html">Policy Makers</a></li>
                     <li class="list-item"><a href="about.html">About</a></li>
                     <li class="list-item"><a href="https://github.com/TornadoWise/TornadoWise/tree/main">GitHub</a></li>
                 </ul>
-                <div class="nav-toggle" onclick="navToggle()">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
             </nav>
         </header>
 
@@ -92,6 +95,6 @@
             </div>
         </footer>
 
-        <script></script>
+        <script src="scripts/site.js"></script>
     </body>
 </html>
