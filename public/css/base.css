@@ -46,6 +46,10 @@ footer {
     padding-right: 2rem;
 }
 
+main {
+    padding-top: 20px;
+}
+
 footer {
     border-top: 1px solid var(--border-color);
     background-color: black;

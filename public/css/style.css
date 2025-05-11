@@ -72,7 +72,7 @@
     text-align: center;
     background-color: azure;
     width: 25rem;
-    height: 10rem;
+    height: auto;
     padding: 25px;
     position: relative;
 
@@ -127,7 +127,6 @@ section {
     margin: 1rem;
     padding: 1rem;
     border: 1px solid #aaaaaa;
-    /* box-shadow: 0px 4px 3px #aaaaaa; */
 }
 
 .team-container section img {
@@ -224,7 +223,9 @@ section {
 }
 
 .goalPoints,
-.projectScopes {
+.projectScopes,
+.challengeScenario,
+.usedTech {
     margin-top: 10px;
     padding-left: 50px;
     padding-right: 50px;
@@ -234,6 +235,10 @@ section {
 .goalPara,
 .projectPara {
     text-align: left;
+}
+
+#technologies-banner {
+    width: 50%;
 }
 
 .footer-nav {
@@ -279,4 +284,17 @@ section {
 
 .fa-bars {
     font-size: 30px;
+}
+
+.supportingImages-content {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#supportImage {
+    padding-top: 20px;
+    display: block;
+    width: 45%;
 }
