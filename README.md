@@ -9,6 +9,10 @@ Geo.ca hackathon | 2025 | Open Sourced
 
 ## Project Intro
 
+## Live Version
+
+You can visit the live version by going to https://tornadowise-hdfrcgamgfdkfwdd.canadacentral-01.azurewebsites.net.
+
 ## Setup
 
 You'll need to make sure you have Node.JS installed. You can do this by entering `node --v` in your OS cli. If it returns a version number, then your good if not go to [Node](https://nodejs.org/en) and download their runtime.
@@ -92,6 +96,10 @@ This project was developed using the following open-source tools:
 
 -   [QGIS](https://qgis.org) – A free and open source geographic information system licensed under the GNU General Public License (GPL v2).
 -   [Visual Studio Code](https://code.visualstudio.com/) – A free source-code editor developed by Microsoft, released under the MIT License.
+
+## Cloud Services Used
+
+-   [Microsoft Azure](https://azure.microsoft.com) – Used for hosting.
 
 ## License / Intellectual Property
 
