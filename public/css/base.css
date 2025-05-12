@@ -55,7 +55,7 @@ footer {
     background-color: black;
     color: #fff;
     margin-top: auto;
-    min-height: 20vh;
+    min-height: 5vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
